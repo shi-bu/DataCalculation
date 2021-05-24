@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.tyhmeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>home</title>
+</head>
+<body>
+	<h2>計算の基準となる日付を入力してください。</h2>
+	<form th:action="@{/search}" method="get">
+		<input type="text" name="date">
+		<br>
+		<button type="submit">計算実行</button>
+	</form>
+	<form th:action="@{/create}" method="get">
+		<button type="submit">新規登録</button>
+	</form>
+	<br>
+	<table>
+		<tr>
+			<th>No</th>
+			<th>日付ID</th>
+			<th>日付名</th>
+			<th>年</th>
+			<th>月</th>
+			<th>日</th>
+			<th>編集</th>
+		</tr>
+		<tr th:each="result:${resultDate}">
+			<td th:text="${result.id}"></td>
+			<td th:text="${result.dateId}"></td>
+			<td th:text="${result.dateName}"></td>
+			<td th:text="${result.adjustmentYear}"></td>
+			<td th:text="${result.adjustmentMonth}"></td>
+			<td th:text="${result.adjustmentDay}"></td>
+			<td>
+				<form th:action="@{/update}" method="get">
+					<button type="submit">更新</button>
+				</form>
+				<form th:action="@{/delete}" method="get">
+					<button type="submit">削除</button>
+				</form>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.calculation.repository.CalculationMapper">
+
+	<select id="selectAll" resultType="com.example.demo.calculation.model.DateCalculation">
+		SELECT
+			id,
+			dateId,
+			dateName,
+			adjustmentYear,
+			adjustmentMonth,
+			adjustmentDay
+		FROM
+			dateValue
+	</select>
+
+	<insert id="insert" parameterType="com.example.demo.calculation.model.DateCalculation">
+		INSERT INTO dateValue (
+			dateId,
+			dateName,
+			adjustmentYear,
+			adjustmentMonth,
+			adjustmentDay)
+		VALUES (
+			#{dateId},
+			#{dateName},
+			#{adjustmentYear},
+			#{adjustmentMonth},
+			#{adjustmentDay})
+	</insert>
+</mapper>

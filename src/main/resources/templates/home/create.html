@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.tyhmeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>create</title>
+</head>
+<body>
+<h1>新規登録</h1>
+	<form th:action="@{/create}" method="post" th:object="${dateCalculation}">
+		<p>日付ID</p>
+		<input type="text" name="dateId" th:field="*{dateId}">
+		<p>日付名</p>
+		<input type="text" name="dateName" th:field="*{dateName}">
+		<p>加減値(年)</p>
+		<input type="text" name="adjustmentYear" th:field="*{adjustmentYear}">
+		<p>加減値(月)</p>
+		<input type="text" name="adjustmentMonth" th:field="*{adjustmentMonth}">
+		<p>加減値(日)</p>
+		<input type="text" name="adjustmentDay" th:field="*{adjustmentDay}">
+		<br><br>
+		<button type="submit">登録</button>
+	</form>
+	<br>
+	<form th:action="@{/home}" method="get">
+	<button type="submit">戻る</button>
+	</form>
+</body>
+</html>
