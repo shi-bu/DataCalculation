@@ -18,6 +18,11 @@ public class CalculationService implements CalculationMapper {
 	public List<DateCalculation> selectAll() {
 		return calcMapper.selectAll();
 	}
+	
+	@Override
+	public DateCalculation selectOne(int id) {
+		return calcMapper.selectOne(id);
+	}
 
 	@Override
 	public void insert(DateCalculation date) {
@@ -30,7 +35,7 @@ public class CalculationService implements CalculationMapper {
 	}
 
 	@Override
-	public void delete(String dateId) {
-		calcMapper.delete(dateId);
+	public void delete(int id) {
+		calcMapper.delete(id);
 	}
 }

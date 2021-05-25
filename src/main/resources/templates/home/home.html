@@ -7,7 +7,7 @@
 <body>
 	<h2>計算の基準となる日付を入力してください。</h2>
 	<form th:action="@{/search}" method="get">
-		<input type="text" name="date">
+		<input type="text" name="searchDate">
 		<br>
 		<button type="submit">計算実行</button>
 	</form>
@@ -20,23 +20,25 @@
 			<th>No</th>
 			<th>日付ID</th>
 			<th>日付名</th>
+			<th>計算結果</th>
 			<th>年</th>
 			<th>月</th>
 			<th>日</th>
 			<th>編集</th>
 		</tr>
-		<tr th:each="result:${resultDate}">
-			<td th:text="${result.id}"></td>
+		<tr th:each="result,no:${resultDate}">
+			<td th:text="${no.count}"></td>
 			<td th:text="${result.dateId}"></td>
 			<td th:text="${result.dateName}"></td>
+			<td th:text="${resultCalc.get(no.index)}"></td>
 			<td th:text="${result.adjustmentYear}"></td>
 			<td th:text="${result.adjustmentMonth}"></td>
 			<td th:text="${result.adjustmentDay}"></td>
 			<td>
-				<form th:action="@{/update}" method="get">
+				<form th:action="@{'/update/' + ${result.id}}" method="get">
 					<button type="submit">更新</button>
 				</form>
-				<form th:action="@{/delete}" method="get">
+				<form th:action="@{'/delete/' + ${result.id}}" method="get">
 					<button type="submit">削除</button>
 				</form>
 			</td>

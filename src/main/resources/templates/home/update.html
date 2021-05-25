@@ -5,6 +5,24 @@
 <title>update</title>
 </head>
 <body>
-
+<h1>新規登録</h1>
+	<form th:action="@{'/update/' + ${id}}" method="post" th:object="${updateDate}">
+		<p>日付ID</p>
+		<input type="text" name="dateId" th:value="*{dateId}" readonly>
+		<p>日付名</p>
+		<input type="text" name="dateName" th:value="*{dateName}">
+		<p>加減値(年)</p>
+		<input type="text" name="adjustmentYear" th:value="*{adjustmentYear}">
+		<p>加減値(月)</p>
+		<input type="text" name="adjustmentMonth" th:value="*{adjustmentMonth}">
+		<p>加減値(日)</p>
+		<input type="text" name="adjustmentDay" th:value="*{adjustmentDay}">
+		<br><br>
+		<button type="submit">登録</button>
+	</form>
+	<br>
+	<form th:action="@{/home}" method="get">
+	<button type="submit">戻る</button>
+	</form>
 </body>
 </html>

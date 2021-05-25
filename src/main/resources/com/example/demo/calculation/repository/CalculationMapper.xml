@@ -16,6 +16,20 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 		FROM
 			dateValue
 	</select>
+	
+	<select id="selectOne" resultType="com.example.demo.calculation.model.DateCalculation">
+		SELECT
+			id,
+			dateId,
+			dateName,
+			adjustmentYear,
+			adjustmentMonth,
+			adjustmentDay
+		FROM
+			dateValue
+		WHERE
+			id = #{id}
+	</select>
 
 	<insert id="insert" parameterType="com.example.demo.calculation.model.DateCalculation">
 		INSERT INTO dateValue (
@@ -31,4 +45,20 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 			#{adjustmentMonth},
 			#{adjustmentDay})
 	</insert>
+	
+	<update id="update" parameterType="com.example.demo.calculation.model.DateCalculation">
+		UPDATE dateValue SET
+			dateName = #{dateName},
+			adjustmentYear = #{adjustmentYear},
+			adjustmentMonth = #{adjustmentMonth},
+			adjustmentDay = #{adjustmentDay}
+		WHERE
+			id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM dateValue
+		WHERE
+			id = #{id}
+	</delete>
 </mapper>

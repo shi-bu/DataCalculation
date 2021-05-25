@@ -10,7 +10,8 @@ import com.example.demo.calculation.model.DateCalculation;
 public interface CalculationMapper {
 
 	public List<DateCalculation> selectAll();
+	public DateCalculation selectOne(int id);
 	public void insert(DateCalculation date);
 	public void update(DateCalculation date);
-	public void delete(String dateId);
+	public void delete(int id);
 }
