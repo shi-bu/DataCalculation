@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.calculation.model.DateCalculation;
 import com.example.demo.calculation.service.CalculationService;
+import com.example.demo.login.model.User;
 
 @Controller
 public class CalculationController {
@@ -26,7 +28,7 @@ public class CalculationController {
 	private CalculationService calcService;
 	
 	@GetMapping("/home")
-	public String getHome(Model model) {
+	public String getHome(@AuthenticationPrincipal User user, Model model) {
 		//login.htmlに遷移
 		return "home/home";
 	}

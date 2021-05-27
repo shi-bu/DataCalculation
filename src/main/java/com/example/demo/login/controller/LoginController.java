@@ -16,6 +16,7 @@ public class LoginController {
 	
 	@PostMapping("/login")
 	public String postLogin(Model model) {
+		
 		//home.htmlに遷移
 		return "home/home";
 	}
