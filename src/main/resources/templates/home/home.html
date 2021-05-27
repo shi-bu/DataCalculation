@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.tyhmeleaf.org">
+<html xmlns:th="http://www.tyhmeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8">
 <title>home</title>
 </head>
 <body>
+	<h1>ユーザーID：<span sec:authentication="name"></span></h1>
+	<form th:action="@{/logout}" method="get">
+		<button type="submit">ログアウト</button>
+	</form>
 	<h2>計算の基準となる日付を入力してください。</h2>
 	<form th:action="@{/search}" method="get">
 		<input type="text" name="searchDate">
