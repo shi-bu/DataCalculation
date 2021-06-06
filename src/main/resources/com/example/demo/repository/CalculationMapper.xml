@@ -3,9 +3,9 @@
 PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.demo.calculation.repository.CalculationMapper">
+<mapper namespace="com.example.demo.repository.CalculationMapper">
 
-	<select id="selectAll" resultType="com.example.demo.calculation.model.DateCalculation">
+	<select id="selectAll" resultType="com.example.demo.model.DateCalculation">
 		SELECT
 			id,
 			dateId,
@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 			dateValue
 	</select>
 	
-	<select id="selectOne" resultType="com.example.demo.calculation.model.DateCalculation">
+	<select id="selectOne" resultType="com.example.demo.model.DateCalculation">
 		SELECT
 			id,
 			dateId,
@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 			id = #{id}
 	</select>
 
-	<insert id="insert" parameterType="com.example.demo.calculation.model.DateCalculation">
+	<insert id="insert" parameterType="com.example.demo.model.DateCalculation">
 		INSERT INTO dateValue (
 			dateId,
 			dateName,
@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
 			#{adjustmentDay})
 	</insert>
 	
-	<update id="update" parameterType="com.example.demo.calculation.model.DateCalculation">
+	<update id="update" parameterType="com.example.demo.model.DateCalculation">
 		UPDATE dateValue SET
 			dateName = #{dateName},
 			adjustmentYear = #{adjustmentYear},

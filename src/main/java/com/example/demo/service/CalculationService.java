@@ -1,12 +1,12 @@
-package com.example.demo.calculation.service;
+package com.example.demo.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.calculation.model.DateCalculation;
-import com.example.demo.calculation.repository.CalculationMapper;
+import com.example.demo.model.DateCalculation;
+import com.example.demo.repository.CalculationMapper;
 
 @Service
 public class CalculationService implements CalculationMapper {

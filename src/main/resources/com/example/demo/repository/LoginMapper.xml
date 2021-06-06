@@ -3,9 +3,9 @@
 PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.demo.login.repository.LoginMapper">
+<mapper namespace="com.example.demo.repository.LoginMapper">
 
-	<select id="findByUserId" resultType="com.example.demo.login.model.User">
+	<select id="findByUserId" resultType="com.example.demo.model.User">
 		SELECT
 			userId,
 			password

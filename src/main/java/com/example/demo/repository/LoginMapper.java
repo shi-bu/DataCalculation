@@ -1,8 +1,8 @@
-package com.example.demo.login.repository;
+package com.example.demo.repository;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.demo.login.model.User;
+import com.example.demo.model.User;
 
 @Mapper
 public interface LoginMapper {

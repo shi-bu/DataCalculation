@@ -1,10 +1,10 @@
-package com.example.demo.calculation.repository;
+package com.example.demo.repository;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.demo.calculation.model.DateCalculation;
+import com.example.demo.model.DateCalculation;
 
 @Mapper
 public interface CalculationMapper {

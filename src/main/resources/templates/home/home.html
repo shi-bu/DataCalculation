@@ -3,51 +3,65 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8">
+<link th:href="@{/css/style.css}" rel="stylesheet"></link>
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/min.js}"></script>
 <title>home</title>
 </head>
 <body>
-	<h1>ユーザーID：<span sec:authentication="name"></span></h1>
-	<form th:action="@{/logout}" method="get">
-		<button type="submit">ログアウト</button>
-	</form>
-	<h2>計算の基準となる日付を入力してください。</h2>
-	<form th:action="@{/search}" method="get">
-		<input type="text" name="searchDate">
-		<br>
-		<button type="submit">計算実行</button>
-	</form>
-	<form th:action="@{/create}" method="get">
-		<button type="submit">新規登録</button>
-	</form>
-	<br>
-	<table>
-		<tr>
-			<th>No</th>
-			<th>日付ID</th>
-			<th>日付名</th>
-			<th>計算結果</th>
-			<th>年</th>
-			<th>月</th>
-			<th>日</th>
-			<th>編集</th>
-		</tr>
-		<tr th:each="result,no:${resultDate}">
-			<td th:text="${no.count}"></td>
-			<td th:text="${result.dateId}"></td>
-			<td th:text="${result.dateName}"></td>
-			<td th:text="${resultCalc.get(no.index)}"></td>
-			<td th:text="${result.adjustmentYear}"></td>
-			<td th:text="${result.adjustmentMonth}"></td>
-			<td th:text="${result.adjustmentDay}"></td>
-			<td>
-				<form th:action="@{'/update/' + ${result.id}}" method="get">
-					<button type="submit">更新</button>
+	<div class="container">
+		<div class="text-center">
+			<div class="inline">
+				<h1>ユーザーID：<span sec:authentication="name"></span></h1>
+				<form th:action="@{/logout}" method="get">
+					<button class="btn btn-primary" type="submit">ログアウト</button>
 				</form>
-				<form th:action="@{'/delete/' + ${result.id}}" method="get">
-					<button type="submit">削除</button>
+			</div>
+			<h2>計算の基準となる日付を入力してください。</h2>
+			<div class="btn-toolbar">
+				<form th:action="@{/search}" method="get" th:object="${searchDate}">
+					<input type="text" name="searchDate" th:field="*{searchDate}">
+					<br>
+					<span class="text-danger" th:if="${#fields.hasErrors('searchDate')}" th:errors="*{searchDate}">title error</span>
+					<br>
+					<button class="btn btn-primary" type="submit">計算実行</button>
 				</form>
-			</td>
-		</tr>
-	</table>
+				<form th:action="@{/create}" method="get">
+					<button class="btn btn-primary" type="submit">新規登録</button>
+				</form>
+			</div>
+			<br>
+			<table class="table table-bordered">
+				<tr>
+					<th class="active">No</th>
+					<th class="active">日付ID</th>
+					<th class="active">日付名</th>
+					<th class="active">計算結果</th>
+					<th class="active">年</th>
+					<th class="active">月</th>
+					<th class="active">日</th>
+					<th class="active">編集</th>
+				</tr>
+				<tr th:each="result,no:${resultDate}">
+					<td th:text="${no.count}"></td>
+					<td th:text="${result.dateId}"></td>
+					<td th:text="${result.dateName}"></td>
+					<td th:text="${resultCalc.get(no.index)}"></td>
+					<td th:text="${result.adjustmentYear}"></td>
+					<td th:text="${result.adjustmentMonth}"></td>
+					<td th:text="${result.adjustmentDay}"></td>
+					<td>
+					<form th:action="@{'/update/' + ${result.id}}" method="get">
+						<button class="btn btn-secondary" type="submit">更新</button>
+					</form>
+					<form th:action="@{'/delete/' + ${result.id}}" method="get">
+						<button class="btn btn-danger" type="submit">削除</button>
+					</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </body>
 </html>
